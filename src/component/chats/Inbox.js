@@ -3,43 +3,37 @@ import { supabase } from '../../services/supabaseClient';
 import { Link } from 'react-router-dom';
 
 export default function Inbox() {
+  const [messages, setMessages] = useState([]);
   const [user, setUser] = useState(null);
-  const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    const load = async () => {
+    const loadInbox = async () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
       setUser(user);
-
       const { data, error } = await supabase
         .from('messages')
-        .select('sender_id, receiver_id')
-        .or(`sender_id.eq.${user.id},receiver_id.eq.${user.id}`);
-
-      if (error) return console.error(error);
-
-      const contactIds = Array.from(
-        new Set(data.flatMap(msg =>
-          msg.sender_id === user.id ? [msg.receiver_id] : [msg.sender_id]
-        ))
-      );
-
-      setContacts(contactIds);
+        .select('*')
+        .or(`sender_id.eq.${user.id},receiver_id.eq.${user.id}`)
+        .order('created_at', { ascending: false });
+      if (!error) setMessages(data);
     };
-
-    load();
+    loadInbox();
   }, []);
 
   return (
     <div>
       <h2>Your Inbox</h2>
-      {contacts.map(id => (
-        <div key={id}>
-          <Link to={`/chat/${id}`}>Chat with user: {id}</Link>
-        </div>
-      ))}
+      <ul>
+        {messages.map(msg => (
+          <li key={msg.id}>
+            <Link to={`/chat/${msg.sender_id === user.id ? msg.receiver_id : msg.sender_id}`}>
+              Message with {msg.sender_id === user.id ? msg.receiver_id : msg.sender_id}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
