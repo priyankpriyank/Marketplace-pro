@@ -1,30 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import AddListing from './components/Listings/AddListing';
-import EditListing from './components/Listings/EditListing';
 import ListingDetail from './components/Listings/ListingDetail';
-import ChatBox from './components/Chat/ChatBox';
+import EditListing from './components/Listings/EditListing';
 import Inbox from './components/Chat/Inbox';
+import ChatBox from './components/Chat/ChatBox';
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/add" element={<AddListing />} />
-        <Route path="/edit/:id" element={<EditListing />} />
-        <Route path="/listing/:id" element={<ListingDetail />} />
-        <Route path="/chat/:userId" element={<ChatBox />} />
-        <Route path="/inbox" element={<Inbox />} />
-        <Route path="*" element={<div>404 - Not Found</div>} />
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <Navbar />
+      <div className="p-4">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/add" element={<AddListing />} />
+          <Route path="/listing/:id" element={<ListingDetail />} />
+          <Route path="/edit/:id" element={<EditListing />} />
+          <Route path="/inbox" element={<Inbox />} />
+          <Route path="/chat/:userId" element={<ChatBox />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
-
-export default App;
