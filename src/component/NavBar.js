@@ -1,45 +1,15 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { supabase } from '../services/supabaseClient';
+import { Link } from 'react-router-dom';
 
-export default function NavBar() {
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-    };
-    getUser();
-
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => {
-      listener.subscription.unsubscribe();
-    };
-  }, []);
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    setUser(null);
-    navigate('/');
-  };
-
+export default function Navbar() {
   return (
-    <nav style={{ padding: '1rem', borderBottom: '1px solid #ccc', marginBottom: '2rem' }}>
-      <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
-      {user && <Link to="/add" style={{ marginRight: '1rem' }}>Add Listing</Link>}
-      {user && <Link to="/inbox" style={{ marginRight: '1rem' }}>Inbox</Link>}
-      {!user && (
-        <>
-          <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
-          <Link to="/register" style={{ marginRight: '1rem' }}>Register</Link>
-        </>
-      )}
-      {user && <button onClick={handleLogout}>Logout</button>}
+    <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
+      <h1 className="text-xl font-bold">🛒 Marketplace</h1>
+      <div className="space-x-4">
+        <Link to="/" className="hover:underline">Home</Link>
+        <Link to="/add" className="hover:underline">Add Listing</Link>
+        <Link to="/inbox" className="hover:underline">Inbox</Link>
+        <Link to="/login" className="hover:underline">Logout</Link>
+      </div>
     </nav>
   );
 }
