@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Navbar from './component/NavBar.jsx';
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import AddListing from './components/Listings/AddListing';
-import ListingDetail from './components/Listings/ListingDetail';
-import EditListing from './components/Listings/EditListing';
-import Inbox from './components/Chat/Inbox';
-import ChatBox from './components/Chat/ChatBox';
+import Login from './component/auth/login.jsx';
+import Register from './component/auth/register.jsx';
+import AddListing from './component/listings/AddListing.jsx';
+import ListingDetail from './component/listings/ListingDetail.jsx';
+import EditListing from './component/listings/EditListing.jsx';
+import Inbox from './component/chats/Inbox.jsx';
+import ChatBox from './component/chats/ChatBox.jsx';
 
 export default function App() {
   return (

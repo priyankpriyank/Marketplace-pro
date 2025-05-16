@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../services/supabaseClient';
+import { supabase } from '../../services/supabaseClient.js';
 import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
