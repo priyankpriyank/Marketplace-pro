@@ -8,27 +8,22 @@ export default function Home() {
   useEffect(() => {
     const fetchListings = async () => {
       const { data, error } = await supabase.from('listings').select('*').order('created_at', { ascending: false });
-      if (error) console.error(error);
-      else setListings(data);
+      if (!error) setListings(data);
     };
-
     fetchListings();
   }, []);
 
   return (
-    <div>
-      <h1>Marketplace</h1>
-      <Link to="/add">Add New Listing</Link>
-      <ul>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Marketplace Listings</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {listings.map(listing => (
-          <li key={listing.id}>
-            <Link to={`/listing/${listing.id}`}>
-              <h3>{listing.title}</h3>
-              <p>${listing.price}</p>
-            </Link>
-          </li>
+          <Link key={listing.id} to={`/listing/${listing.id}`} className="border rounded p-4 shadow hover:shadow-md transition">
+            <h3 className="text-lg font-semibold">{listing.title}</h3>
+            <p className="text-blue-600">${listing.price}</p>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
