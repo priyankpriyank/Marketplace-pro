@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -13,18 +14,16 @@ export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="p-4">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/add" element={<AddListing />} />
-          <Route path="/listing/:id" element={<ListingDetail />} />
-          <Route path="/edit/:id" element={<EditListing />} />
-          <Route path="/inbox" element={<Inbox />} />
-          <Route path="/chat/:userId" element={<ChatBox />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/add" element={<AddListing />} />
+        <Route path="/listing/:id" element={<ListingDetail />} />
+        <Route path="/edit/:id" element={<EditListing />} />
+        <Route path="/inbox" element={<Inbox />} />
+        <Route path="/chat/:userId" element={<ChatBox />} />
+      </Routes>
     </BrowserRouter>
   );
 }
