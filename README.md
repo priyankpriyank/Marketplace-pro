@@ -17,3 +17,24 @@ This is a fully functional marketplace web application built with **React.js** a
 
 ## 📁 Project Structure
 
+Marketplace-pro/
+│
+├── public/ # Static files
+├── src/
+│ ├── components/
+│ │ ├── Chat/
+│ │ ├── Listings/
+│ │ └── Navbar.jsx
+│ ├── pages/
+│ │ ├── Home.jsx
+│ │ └── NotFound.jsx
+│ ├── component/
+│ │ └── auth/ # Login & Register
+│ ├── services/
+│ │ └── supabaseClient.js
+│ ├── App.js
+│ ├── index.js
+│ └── index.css
+├── .env # Environment variables (add your Supabase keys here)
+├── package.json
+└── tailwind.config.js
