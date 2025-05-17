@@ -38,3 +38,17 @@ Marketplace-pro/
 ├── .env # Environment variables (add your Supabase keys here)
 ├── package.json
 └── tailwind.config.js
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/priyankpriyank/marketplace-pro
+cd marketplace-pro
+
+npm install
+
+npm start
