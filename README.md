@@ -6,7 +6,12 @@ This is a fully functional marketplace web application built with **React.js** a
 
 ## 🚀 Features
 
-- 
+- 🔐 User Authentication (Login / Register via Supabase Auth)
+- 📦 Add, View, Edit Listings
+- 💬 Real-time Messaging System
+- 🏠 Home page with listings feed
+- 📱 Responsive Design with Tailwind CSS
+- ⚙️ Supabase as the backend (Database + Auth)
 
 ---
 
