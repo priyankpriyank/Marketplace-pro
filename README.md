@@ -39,6 +39,7 @@ Marketplace-pro/
 ├── package.json
 └── tailwind.config.js
 
+(This project is not fully build. i am still building it therefore the above project structure may change) 
 ---
 
 ## 🛠️ Getting Started
