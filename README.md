@@ -40,6 +40,8 @@ Marketplace-pro/
 └── tailwind.config.js
 
 (This project is not fully build. i am still building it therefore the above project structure may change) 
+
+Note- This is the legacy version of the CRUD marketplace app with pho project in my repository.
 ---
 
 ## 🛠️ Getting Started
