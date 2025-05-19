@@ -42,6 +42,7 @@ Marketplace-pro/
 (This project is not fully build. i am still building it therefore the above project structure may change) 
 
 Note- This is the legacy version of the CRUD marketplace app with pho project in my repository.
+Repo - https://github.com/priyankpriyank/Marketplace-CRUD-Web-Application
 ---
 
 ## 🛠️ Getting Started
